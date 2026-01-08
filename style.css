@@ -73,6 +73,11 @@ footer{padding:1rem;background:var(--muted);text-align:center;margin-top:2rem;bo
 /* Mobile nav and hero adjustments */
 /* Hide hamburger on desktop and keep horizontal nav layout */
 .nav-toggle{display:none !important}
+/* helper: show only on small screens */
+.mobile-only{display:none}
+@media (max-width:760px){
+  .mobile-only{display:inline-flex}
+}
 .nav-wrap{display:flex;align-items:center;justify-content:flex-start;padding:0.5rem 1rem}
 .nav-wrap .nav{position:static;left:auto;top:auto;width:auto;height:auto;background:transparent;padding:0;box-shadow:none}
 @media (max-width:760px){
