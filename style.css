@@ -68,4 +68,18 @@ header .nav{
 
 footer{padding:1rem;background:var(--muted);text-align:center;margin-top:2rem;border-top:1px solid rgba(0,0,0,0.03)}
 
-.meta{color:#1976a6;font-weight:600} 
+.meta{color:#1976a6;font-weight:600}  
+
+/* Mobile nav and hero adjustments */
+.nav-toggle{display:none}
+@media (max-width:760px){
+  .nav{display:flex;flex-direction:column;position:fixed;top:0;left:-280px;width:260px;height:100%;background:white;padding:1.5rem;box-shadow:2px 0 18px rgba(0,0,0,0.12);z-index:300;transition:left .28s ease}
+  .nav.open{left:0}
+  .nav a{display:block;padding:0.75rem 0;border-radius:6px;border:0}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1rem}
+  .nav-toggle{display:inline-flex;background:var(--accent);color:white;border:0;padding:0.45rem 0.75rem;border-radius:8px;font-weight:700;cursor:pointer}
+  .hero .hero-text{left:1rem;right:1rem;top:auto;bottom:1.25rem;transform:none;text-align:left;z-index:100}
+  .hero h1{font-size:1.4rem}
+  .hero p{font-size:0.95rem}
+  .hero img{height:220px}
+}

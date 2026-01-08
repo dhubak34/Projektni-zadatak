@@ -11,13 +11,16 @@
 </head>
 <body>
   <header>
-    <nav class="nav container">
-      <a href="index.html" class="active">Početna</a>
-      <a href="novosti.html">Novosti</a>
-      <a href="o-nama.html">O nama</a>
-      <a href="galerija.html">Galerija</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
+    <div class="nav-wrap container">
+      <button class="nav-toggle" aria-expanded="false" aria-label="Otvori izbornik" aria-controls="main-nav">☰</button>
+      <nav id="main-nav" class="nav">
+        <a href="index.html" class="active">Početna</a>
+        <a href="novosti.html">Novosti</a>
+        <a href="o-nama.html">O nama</a>
+        <a href="galerija.html">Galerija</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
     <div class="hero">
       <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4c5d9c8c8b2f5b8a4f874d4e5a4a9c2a" alt="Servis računala - H Repair">
       <div class="hero-text container">
@@ -91,5 +94,23 @@
       </a>
     </div>
   </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var btn = document.querySelector('.nav-toggle');
+    var nav = document.getElementById('main-nav');
+    if(!btn || !nav) return;
+    btn.addEventListener('click', function(e){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      e.stopPropagation();
+    });
+    document.addEventListener('click', function(e){
+      if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+  </script>
 </body>
 </html>
