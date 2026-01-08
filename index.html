@@ -99,18 +99,36 @@
     var btn = document.querySelector('.nav-toggle');
     var nav = document.getElementById('main-nav');
     if(!btn || !nav) return;
+    // ensure initial accessible state
+    nav.setAttribute('aria-hidden','true');
+    btn.setAttribute('aria-expanded','false');
+
     btn.addEventListener('click', function(e){
       var open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
+      nav.setAttribute('aria-hidden', !open);
       e.stopPropagation();
     });
+
+    // close on outside click
     document.addEventListener('click', function(e){
       if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) {
         nav.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
+        nav.setAttribute('aria-hidden','true');
+      }
+    });
+
+    // close on ESC key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        nav.setAttribute('aria-hidden','true');
+        btn.focus();
       }
     });
   });
   </script>
 </body>
-</html>
+</html> 

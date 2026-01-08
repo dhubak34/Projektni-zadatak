@@ -81,8 +81,9 @@ footer{padding:1rem;background:var(--muted);text-align:center;margin-top:2rem;bo
 .nav-wrap{display:flex;align-items:center;justify-content:flex-start;padding:0.5rem 1rem}
 .nav-wrap .nav{position:static;left:auto;top:auto;width:auto;height:auto;background:transparent;padding:0;box-shadow:none}
 @media (max-width:760px){
-  .nav{display:flex;flex-direction:column;position:fixed;top:0;left:-280px;width:260px;height:100%;background:white;padding:1.5rem;box-shadow:2px 0 18px rgba(0,0,0,0.12);z-index:300;transition:left .28s ease}
-  .nav.open{left:0}
+  /* off-canvas hidden by default using transform + visibility */
+  .nav{display:flex;flex-direction:column;position:fixed;top:0;left:0;transform:translateX(-110%);width:260px;height:100%;background:white;padding:1.5rem;box-shadow:2px 0 18px rgba(0,0,0,0.12);z-index:300;transition:transform .28s ease,visibility .28s ease,opacity .28s ease;visibility:hidden;opacity:0;pointer-events:none;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .nav.open{transform:translateX(0);visibility:visible;opacity:1;pointer-events:auto}
   .nav a{display:block;padding:0.75rem 0;border-radius:6px;border:0}
   .nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1rem}
   .nav-toggle{display:inline-flex;background:var(--accent);color:white;border:0;padding:0.45rem 0.75rem;border-radius:8px;font-weight:700;cursor:pointer}
@@ -90,4 +91,4 @@ footer{padding:1rem;background:var(--muted);text-align:center;margin-top:2rem;bo
   .hero h1{font-size:1.4rem}
   .hero p{font-size:0.95rem}
   .hero img{height:220px}
-}
+} 
