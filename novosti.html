@@ -12,10 +12,10 @@
 <body>
   <header>
     <div class="nav-wrap container">
-      <button class="nav-toggle mobile-only" aria-expanded="false" aria-label="Otvori izbornik" aria-controls="main-nav">☰</button>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Otvori izbornik" aria-controls="main-nav">☰</button>
       <nav id="main-nav" class="nav">
-        <a href="index.html">Početna</a>
-        <a href="novosti.html" class="active">Novosti</a>
+        <a href="index.html" >Početna</a>
+        <a href="novosti.html">Novosti</a>
         <a href="o-nama.html">O nama</a>
         <a href="galerija.html">Galerija</a>
         <a href="kontakt.html">Kontakt</a>
@@ -93,30 +93,15 @@
     var btn = document.querySelector('.nav-toggle');
     var nav = document.getElementById('main-nav');
     if(!btn || !nav) return;
-    nav.setAttribute('aria-hidden','true');
-    btn.setAttribute('aria-expanded','false');
-
     btn.addEventListener('click', function(e){
       var open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
-      nav.setAttribute('aria-hidden', !open);
       e.stopPropagation();
     });
-
     document.addEventListener('click', function(e){
       if (!nav.contains(e.target) && !btn.contains(e.target) && nav.classList.contains('open')) {
         nav.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
-        nav.setAttribute('aria-hidden','true');
-      }
-    });
-
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded','false');
-        nav.setAttribute('aria-hidden','true');
-        btn.focus();
       }
     });
   });
